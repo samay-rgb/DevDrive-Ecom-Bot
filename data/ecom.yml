@@ -1,0 +1,40 @@
+categories: -shopping
+conversations:
+  - - I am facing some problem I have some problems help me
+    - How may I help you?Please describe the problem you are facing
+  - - I am facing some problem I have some problems help me
+    - Please provide more details about your problem
+  - - I am facing some problem I have some problems help me
+    - What problems are you facing?
+  - - What do you sell?
+    - We sell smartphones, speakers, grocery, books and almost everything you could ask for. Type 'search productName' if you want to buy something
+  - - What can you do?
+    - I can help you with providing details about your order, cancel or return your order, for more details visit www.flipkart.com
+  - - What can you do?
+    - I can help you out with your orders
+  - - Show my orders
+    - You can easily check your orders by following the simple steps click on Menu, then click on my orders
+  - - Show my orders
+    - Just click on menu(the top 3 dashed bars) ,then select my orders
+  - - I want to return my order
+    - Your order must meet the required condition to be eligible for returns.For more details visit https://www.flipkart.com/helpcentre/returnOrder/  Your product must be in unused condition and within 30 days of delivery. Do u get it?
+    - Got it.
+    - Just go to "My orders" then select the order you want to return and then click on "Return my order"
+    - OK
+    - Do you want to get refund or exchange your order?
+    - I want refund
+    - You can easily place a refund request for your order while completing the return procedure.
+  - - I want to exchange my order
+    - Exchanges might not be available for some orders. Please check it out while placing return request.
+  - - Refund not received
+    - We are sorry for the inconvenience .Please reply "fine" if you want to chat with  our customer care executive
+    - fine
+    - Vineet will be joinig the conversation shortly
+  - - I want to cancel my order
+    - Are you sure you want to cancel your order?(yeah/nah)
+    - Yeah
+    - Just go to "My orders" then select the order you want to cancel and then click on "Cancel my order"
+  - - I want to cancel my order
+    - Are you sure you want to cancel your order?(yeah/nah)
+    - Nah
+    - Alright

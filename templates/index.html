@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anakin Bot</title>
+    <style>
+      body {
+        background-image: linear-gradient(
+          to right top,
+          #7faef3,
+          #70bdf7,
+          #6ccbf7,
+          #73d8f4,
+          #84e3ef
+        );
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+      }
+      .container {
+        margin: auto;
+        overflow-y: auto;
+        max-width: 955px;
+        border: 8px solid #c8c8ff;
+        border-radius: 15px;
+        padding: 20px;
+        height: 70vh;
+        display: flex;
+        margin-bottom: 15px;
+        flex-direction: column-reverse;
+      }
+      .botres {
+        padding: 10px;
+        border: 1px solid ghostwhite;
+        border-radius: 34px 0 30px 0;
+        width: 45%;
+        margin: 5px;
+        background-image: linear-gradient(
+          to right,
+          #93ebff,
+          #9cecff,
+          #a4eeff,
+          #acefff,
+          #b4f0ff,
+          #afecff,
+          #abe8ff,
+          #a8e4ff,
+          #9ddaff,
+          #9acdff,
+          #a1c0ff,
+          #afb0ff
+        );
+      }
+      a {
+        text-decoration: none;
+      }
+      a:visited {
+        color: rgb(62, 181, 236);
+      }
+      a:hover {
+        cursor: pointer;
+      }
+      .userText {
+        padding: 10px;
+        border: 1px solid ghostwhite;
+        border-radius: 34px 0 30px 0;
+        width: 45%;
+        margin: 5px;
+        background-image: linear-gradient(
+          to right,
+          #93ebff,
+          #9cecff,
+          #a4eeff,
+          #acefff,
+          #b4f0ff,
+          #afecff,
+          #abe8ff,
+          #a8e4ff,
+          #9ddaff,
+          #9acdff,
+          #a1c0ff,
+          #afb0ff
+        );
+      }
+
+      .left {
+        float: left;
+        clear: both;
+      }
+      .right {
+        float: right;
+        clear: both;
+      }
+      .user {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+      }
+      #send {
+        width: 70px;
+        border: 0;
+        border-radius: 20px;
+      }
+      #userIn {
+        width: 880px;
+        margin-right: 2px;
+        height: 32px;
+        padding: 5px;
+        outline: none;
+        border: 1px solid black;
+        border-radius: 15px;
+      }
+      .loader {
+        border: 5px solid #f3f3f3; /* Light grey */
+        border-top: 5px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+      }
+      .topBar {
+        margin: auto;
+        padding: 15px;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Lato", sans-serif;
+        font-family: "Oswald", sans-serif;
+        font-family: "Noto Sans JP", sans-serif;
+      }
+      .wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+        /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+        /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+        /* clip-path: circle(25px at calc(0% + 45px) 45px); */
+        background: #000;
+        clip-path: circle(25px at calc(100% - 45px) 45px);
+        transition: all 0.3s ease-in-out;
+      }
+      #active:checked ~ .wrapper {
+        clip-path: circle(75%);
+      }
+      .menu-btn {
+        position: absolute;
+        z-index: 2;
+        right: 20px;
+        /* left: 20px; */
+        top: 20px;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 50%;
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer;
+        /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+        /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+        /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+        background: #000;
+        transition: all 0.3s ease-in-out;
+      }
+      #active:checked ~ .menu-btn {
+        color: #fff;
+      }
+      #active:checked ~ .menu-btn i:before {
+        content: "\f00d";
+      }
+      .wrapper ul {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+      }
+      .wrapper ul li {
+        margin: 15px 0;
+      }
+      .wrapper ul li a {
+        color: none;
+        text-decoration: none;
+        font-size: 30px;
+        font-weight: 500;
+        padding: 5px 30px;
+        color: #fff;
+        border-radius: 50px;
+        background: #000;
+        position: relative;
+        line-height: 50px;
+        transition: all 0.3s ease;
+      }
+      .wrapper ul li a:after {
+        position: absolute;
+        content: "";
+        background: #fff;
+        background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+        /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+        width: 104%;
+        height: 110%;
+        left: -2%;
+        top: -5%; /* if the font is 'Oswald'*/
+        border-radius: 50px;
+        transform: scaleY(0);
+        z-index: -1;
+        animation: rotate 1.5s linear infinite;
+        transition: transform 0.3s ease;
+      }
+      .wrapper ul li a:hover:after {
+        transform: scaleY(1);
+      }
+      .wrapper ul li a:hover {
+        color: #fff;
+      }
+      input[type="checkbox"] {
+        display: none;
+      }
+      @keyframes rotate {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <input type="checkbox" id="active" />
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Feedback</a></li>
+      </ul>
+    </div>
+    <div class="topBar">
+      <h1>Get all the answers you want!</h1>
+    </div>
+    <div class="container" id="container1">
+      <div id="bot">
+        <p class="botres">Anakin: Hey there! How may I help you?</p>
+      </div>
+    </div>
+    <div class="user">
+      <input type="text" name="" id="userIn" />
+      <button type="submit" id="send">
+        <img src="https://img.icons8.com/fluency/30/000000/filled-sent.png" />
+      </button>
+    </div>
+    <script>
+      function getBotResponse() {
+        var rawText = $("#userIn").val();
+        var userHtml =
+          '<p class = "userText right"><span>YOU: ' + rawText + "</span></p>";
+        $("#userIn").val("");
+        $("#bot").append(userHtml);
+        document
+          .getElementById("userIn")
+          .scrollIntoView({ block: "start", behaviour: "smooth" });
+        var loading = '<p class="loader botres left" id="load"></p>';
+        $("#bot").append(loading);
+        document
+          .getElementById("userIn")
+          .scrollIntoView({ block: "start", behaviour: "smooth" });
+
+        $.get("/get", { msg: rawText }).done(function (data) {
+          if (rawText.search("search") != -1) {
+            var query = rawText.substring(6);
+            var botHtml =
+              '<a class="left botres" href="' +
+              data +
+              '" target="_blank">Anakin: Shop for' +
+              query +
+              "</a>";
+            $("#load").remove();
+            $("#bot").append(botHtml);
+            document
+              .getElementById("user")
+              .scrollIntoView({ block: "start", behaviour: "smooth" });
+          }
+
+          var botHtml =
+            '<p class ="botres left"><span>Anakin: ' + data + "</span></p>";
+          $("#load").remove();
+          $("#bot").append(botHtml);
+          document
+            .getElementById("user")
+            .scrollIntoView({ block: "start", behaviour: "smooth" });
+        });
+      }
+      $("#userIn").keypress(function (e) {
+        if (e.which == 13) {
+          getBotResponse();
+        }
+      });
+      $("#send").click(function () {
+        getBotResponse();
+      });
+    </script>
+  </body>
+</html>
